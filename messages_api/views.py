@@ -35,3 +35,13 @@ def api_exception_handler(exc, context=None):
     else:
         response.data = {'message': 'API Error'}
     return response
+
+
+################################################################################################################################
+from rest_framework import generics
+from .models import Entity
+from .serializers import EntitySerializer
+
+class EntityList(generics.ListAPIView):
+    queryset = Entity.objects.all()
+    serializer_class = EntitySerializer
